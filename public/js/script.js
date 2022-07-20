@@ -21,13 +21,7 @@ const startTest = async () => {
   //show
   questionIndex = 0;
 
-  try {
-    const res = await fetch('/questions');
-    questions = await res.json();
-  } catch (error) {
-    console.log(error)
-  }
-  
+  questions = await getQuestions('/questions');
   
   let questionObj = questions[selectedIndices[questionIndex]];
   //console.log(questionObj);
@@ -59,6 +53,16 @@ const startTest = async () => {
   document.getElementsByClassName("your-answers")[0].style.display = "none";
 };
 
+
+const getQuestions = async (url) => {  
+  try {
+    const res = await fetch(url);
+    const jsonRes = await res.json();
+    return jsonRes;
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 const resetPreviousStyles = () => {
   //reset styles added previously

@@ -1,4 +1,4 @@
-const questions = require('../models/db');
+const questions = require('../models/db.js');
 
 
 const getQuestions = (req, res) => {
